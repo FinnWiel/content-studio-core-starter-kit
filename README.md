@@ -1,58 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Content Studio Core Starter Kit
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel starter kit for projects powered by `shazzoo/content-studio-core`.
 
-## About Laravel
+## What this starter includes
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Content Studio Core preconfigured in a fresh Laravel app
+- Filament admin panel at `/admin`
+- Example theme: `shazzoo/example-theme`
+- Seeded homepage, navigation, language + SEO settings
+- Seeded starter block: `welcome-block`
+- Custom command: `make:content-studio-user`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Create a project
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Stable tag:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+laravel new my-site --using=finnwiel/content-studio-core-starter-kit
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Latest starter branch (development):
 
-## Contributing
+```bash
+laravel new my-site --using=finnwiel/content-studio-core-starter-kit:dev-main
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Then run:
 
-## Code of Conduct
+```bash
+cd my-site
+npm install
+npm run build
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The starter runs key generation, migrations, and seeding during `post-create-project-cmd`.
 
-## Security Vulnerabilities
+## First login
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Default seeded admin:
+
+- Email: `admin@example.com`
+- Password: `password`
+
+Create your own admin user:
+
+```bash
+php artisan make:content-studio-user
+```
+
+## Seeded starter data
+
+`ContentStudioStarterSeeder` creates:
+
+- admin user (`is_admin = true`)
+- homepage
+- main navigation (`translation_key = main`)
+- global language settings
+- default SEO settings
+- active theme set to `shazzoo/example-theme`
+
+## Starter theme structure
+
+Theme location:
+
+- `app/Themes/starter-simple`
+
+Includes:
+
+- layout: `resources/views/layouts/app.blade.php`
+- template: `resources/views/templates/default.blade.php`
+- header + footer components
+- block view: `resources/views/components/blocks/welcome-block.blade.php`
+- block definition: `src/Forms/Blocks/WelcomeBlockDefinition.php`
+- template settings: `src/Templates/DefaultSettings.php`
+
+Template setting available on `default` template:
+
+- `show_page_title` (toggle)
+
+## Useful commands
+
+```bash
+composer run dev
+php artisan test
+vendor/bin/pint --format agent
+php artisan optimize:clear
+```
+
+## Troubleshooting
+
+- If styling is missing, restart Vite: `npm run dev`, then hard refresh.
+- If routes/config are stale, run `php artisan optimize:clear`.
+- If you use `dev-main`, remember `composer.lock` controls the exact commit installed.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Proprietary. Internal starter kit for Shazzoo projects.
