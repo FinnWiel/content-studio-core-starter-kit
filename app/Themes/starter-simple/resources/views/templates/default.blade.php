@@ -9,21 +9,21 @@ Regions: content
 
 @section('content')
     <section class="space-y-6">
-        @if (! empty($page->title))
+        @if (($page->template_settings['show_page_title'] ?? true) && !empty($page->title))
             <header class="space-y-2">
                 <h1 class="text-3xl font-semibold tracking-tight text-slate-900">{{ $page->title }}</h1>
-                @if (! empty($page->excerpt))
+                @if (!empty($page->excerpt))
                     <p class="text-base text-slate-600">{{ $page->excerpt }}</p>
                 @endif
             </header>
         @endif
 
         <div class="space-y-6">
-            @foreach (($pageBlocks['content'] ?? []) as $block)
+            @foreach ($pageBlocks['content'] ?? [] as $block)
                 @livewire($block['component'], $block['props'] ?? [])
             @endforeach
 
-            @foreach (($page->content ?? []) as $contentblock)
+            @foreach ($page->content ?? [] as $contentblock)
                 @php
                     $type = $contentblock['type'] ?? null;
                     $data = $contentblock['data'] ?? [];
