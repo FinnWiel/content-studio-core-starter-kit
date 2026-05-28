@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "377def4034429ca95f64e8e19ca4b807",
+    "content-hash": "2346c974167cc3a3be624990b50b1252",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -6156,7 +6156,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Shazzoo/content-studio-core.git",
-                "reference": "71cad823e83ea38982cad7e71c153af6d494cad7"
+                "reference": "dbf295c23bebe9909b5e4e490df8c5dfd8d1043d"
             },
             "require": {
                 "artesaos/seotools": "^1.3",
@@ -6192,7 +6192,7 @@
                 "proprietary"
             ],
             "description": "Content Studio Core — the CMS engine for Shazzoo-powered websites.",
-            "time": "2026-05-21T11:46:19+00:00"
+            "time": "2026-05-28T11:39:13+00:00"
         },
         {
             "name": "spatie/browsershot",
