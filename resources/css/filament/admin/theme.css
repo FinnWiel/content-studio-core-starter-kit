@@ -1,0 +1,22 @@
+@import "../../../../vendor/filament/filament/resources/css/theme.css";
+@import "../../../../vendor/awcodes/filament-curator/resources/css/plugin.css";
+
+@config "./tailwind.config.js";
+
+/* @media (prefers-color-scheme: light) {
+    body {
+        background-color: #d3cdd2 !important;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #2d162d !important;
+    }
+} */
+
+.fi-simple-header .fi-logo {
+    @apply !h-24;
+}
+.fi-sidebar-header .fi-logo {
+    @apply !h-12;
+}

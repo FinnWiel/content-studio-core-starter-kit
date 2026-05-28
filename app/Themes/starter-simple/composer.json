@@ -1,0 +1,14 @@
+{
+  "name": "shazzoo/example-theme",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Shazzoo\\ExampleTheme\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": []
+    }
+  }
+}
